@@ -1,0 +1,35 @@
+﻿@model Vroom.Models.ViewModel.ModelViewModel ;
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <h1>Dodaj model vozila</h1>
+    <form action="Create" method="post">
+        <label asp-for="Id"></label>
+        <select asp-for="Id">
+            @foreach(var make in Model.Makes)
+            {
+                <option value="@make.Id">@make.Name</option>
+
+            }
+        </select>
+       
+
+        <label asp-for="Name"></label>
+        <input type="text" asp-for="Name" />
+        <button type="submit">Add</button>
+        <a href="/Model/Index">Back</a>
+
+    </form>
+
+
+</body>
+</html>

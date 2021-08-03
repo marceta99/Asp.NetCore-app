@@ -1,0 +1,41 @@
+﻿@model Vroom.Models.Bike ;
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link href="~/css/site.css" rel="stylesheet" />
+
+
+    </head>
+    <body>
+
+        <div class="details">
+            @Html.DisplayFor(marku => Model.Make.Name)
+            @Html.DisplayFor(model => Model.Model.Name)
+            @if (Model.ImagePath != null)
+            {
+                <img src="@Html.DisplayFor(m => Model.ImagePath)" style="width:100px ; height:100px;" />
+            }
+            else
+            {
+                <img src="~/images/noimage.jpg" style="width:60px ; height:60px;" />
+            }
+            <p>Mileage: @Html.DisplayFor(m => Model.Mileage)</p>
+
+            <p>Price: @Html.DisplayFor(m => Model.Mileage) @Html.DisplayFor(m => Model.Currency)</p>
+
+
+
+            <p>Sellers Name: @Html.DisplayFor(m => Model.SellerName)</p>
+            <p>Sellers Email: @Html.DisplayFor(m => Model.SellerEmail)</p>
+            <p>Sellers Phone :  @Html.DisplayFor(m => Model.SellerPhone)</p>
+
+
+        </div>
+
+
+    </body>
+</html>

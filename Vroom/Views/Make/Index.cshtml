@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Vroom.Models.Make> ;
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h2> Brends of Vehicles</h2>
+        <a asp-action="Create" asp-controller="Make" style="margin:20px;font-size:20px;">Add New Brend</a>
+
+        <div class="marke-container">
+            <h2>Brend Name</h2>
+            @if (Model.Any())
+            {
+                foreach (var marka in Model)
+                {
+        <div class="brend-cart">
+            @Html.DisplayFor(marku => marka.Name)
+
+            <form method="post" action="Edit">
+                <button type="submit" asp-action="Edit"
+                        asp-controller="Make" asp-route-id="@marka.Id" value="Edit marku">
+                    Edituj
+                </button>
+            </form>
+
+            <form method="post" action="Delete">
+                <button onclick="if(!confirm(`do you wont do delete this make`)){return false }" type="submit" asp-action="Delete"
+                        asp-controller="Make" asp-route-id="@marka.Id" >
+                    Delete
+                </button>
+            </form>
+
+            </div>
+
+
+            }
+            }
+            else
+            {
+            <h2>There is no more vehicles</h2>
+            }
+        </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/c900fea168.js" crossorigin="anonymous"></script>
+</body>
+</html>

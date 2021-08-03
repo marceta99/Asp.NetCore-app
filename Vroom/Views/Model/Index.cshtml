@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Vroom.Models.Model> ;
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h2> Model of Vehicle</h2>
+        <a asp-action="Create" asp-controller="Model" style="margin:20px;font-size:20px;">Add New Model</a>
+
+        <div class="model-container">
+            
+            @if (Model.Any())
+            {
+                foreach (var modelVozila in Model)
+                {
+            <div class="brend-cart">
+                @Html.DisplayFor(marku => modelVozila.Make.Name)
+                @Html.DisplayFor(model => modelVozila.Name)
+
+
+               
+                    <a style="color:white ; " asp-action="Edit" asp-route-id="@modelVozila.Id"
+                            asp-controller="Model">
+                        Edit Model
+                    </a>
+
+
+                <form method="post" action="Delete">
+                    <button onclick="if(!confirm(`do you wont do delete this make`)){return false }" type="submit" asp-action="Delete"
+                            asp-controller="Model" asp-route-id="@modelVozila.Id">
+                        Delete Model
+                    </button>
+                </form>
+
+            </div>
+
+
+                }
+            }
+            else
+            {
+                <h2>Nema nijedna model vozila za sada </h2>
+            }
+        </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/c900fea168.js" crossorigin="anonymous"></script>
+</body>
+</html>
